@@ -8,9 +8,14 @@ export default function Formelrad() {
         u: 10,
         i: 2,
         r: "",
-        p: "",
-        message: ""
+        p: ""
     })
+
+    const handleClear = (event) => {
+        event.preventDefault();
+        console.log("handleClear");
+        setValues(values => ({...values, u:"", i:"", r:"", p:"", message: ""}))
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -67,7 +72,7 @@ export default function Formelrad() {
                     <InputField color={"black"} value={values.r} label="Widerstand" handleChange={e => {setValues(values => ({...values, r: e.target.value}))}} />
                     <InputField color={"black"} value={values.p} label="Leistung" handleChange={e => {setValues(values => ({...values, p: e.target.value}))}} />
                     <button type="submit">Calculate</button>
-                    <p>{values.message}</p>
+                    <button style={{margin:10}} onClick={handleClear}>Clear</button>
                 </form>
             </section>
         </>
